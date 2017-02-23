@@ -1,0 +1,29 @@
+version: "2"
+services:
+  etherpad:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ETHERPAD_TITLE
+      - ETHERPAD_PORT=9001
+      - ETHERPAD_SESSION_KEY
+      - ETHERPAD_ADMIN_PASSWORD
+      - ETHERPAD_ADMIN_USER
+      - ETHERPAD_DB_HOST
+      - ETHERPAD_DB_PORT
+      - ETHERPAD_DB_USER
+      - ETHERPAD_DB_PASSWORD
+      - ETHERPAD_DB_NAME
+    ports:
+      - "127.0.0.1:${ETHERPAD_HOST_PORT}:9001"
+
+  mariadb:
+    image: mariadb:10.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+
