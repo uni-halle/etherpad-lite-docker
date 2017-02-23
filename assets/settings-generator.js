@@ -19,6 +19,9 @@
 			database: penv.ETHERPAD_DB_NAME
 		}
 	};
+	if ( penv.ETHERPAD_DEFAULT_PAD_TEXT ) {
+		settings['defaultPadText'] = penv.ETHERPAD_DEFAULT_PAD_TEXT;
+	}
 	if ( penv.ETHERPAD_ADMIN_PASSWORD ) {
 		settings['users'] = {};
 		settings['users'][penv.ETHERPAD_ADMIN_USER] = {

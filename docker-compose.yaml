@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - ETHERPAD_TITLE
+      - ETHERPAD_DEFAULT_PAD_TEXT
       - ETHERPAD_PORT=9001
       - ETHERPAD_SESSION_KEY
       - ETHERPAD_ADMIN_PASSWORD

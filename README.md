@@ -63,6 +63,7 @@ Use it:
 This image supports the following environment variables:
 
 * `ETHERPAD_TITLE`: Title of the Etherpad Lite instance. Defaults to "Etherpad".
+* `ETHERPAD_DEFAULT_PAD_TEXT`: Default text shown when opening a new pad.
 * `ETHERPAD_PORT`: Port of the Etherpad Lite instance. Defaults to 9001.
 * `ETHERPAD_SESSION_KEY`: Session key for the Etherpad Lite configuraition. You
 can set this in case of migrating from another installation. A value is
