@@ -39,7 +39,7 @@ $ docker run -d \
     -e ETHERPAD_DB_HOST=ep_mysql \
     -e ETHERPAD_DB_PASSWORD=password \
     -p 9001:9001 \
-    tvelocity/etherpad-lite
+    unihalle/etherpad-lite
 ```
 
 Etherpad will automatically create an `etherpad` database in the specified mysql
