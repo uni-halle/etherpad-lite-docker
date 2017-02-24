@@ -1,14 +1,8 @@
 # Etherpad Lite image for docker
 
-This is a docker image for [Etherpad Lite](http://etherpad.org/) collaborative
-text editor. The Dockerfile for this image has been inspired by the
-[official Wordpress](https://registry.hub.docker.com/_/wordpress/) Dockerfile and
-[johbo's etherpad-lite](https://registry.hub.docker.com/u/johbo/etherpad-lite/)
-image.
+This is a docker image for [Etherpad Lite](http://etherpad.org/) collaborative text editor. The Dockerfile for this image has been inspired by [johbo's etherpad-lite](https://registry.hub.docker.com/u/johbo/etherpad-lite/).
 
-This image uses an mysql container for the backend for the pads. It is based
-on debian jessie instead of the official node docker image, since the latest
-stable version of etherpad-lite does not support npm 2.
+This image comes with configuration options for MariaDB (or MySQL) as the database backend. The docker-compose file we added allows users launch the etherpad and the database with a single `docker-compose up`.
 
 ## About Etherpad Lite
 
@@ -28,7 +22,7 @@ First you need a running mysql container, for example:
 
 ```bash
 $ docker network create ep_network
-$ docker run -d --network ep_network -e MYSQL_ROOT_PASSWORD=password --name ep_mysql mysql
+$ docker run -d --network ep_network -e MYSQL_ROOT_PASSWORD=password --name ep_mysql mariadb:10
 ```
 
 Finally you can start an instance of Etherpad Lite:
@@ -42,14 +36,12 @@ $ docker run -d \
     unihalle/etherpad-lite
 ```
 
-Etherpad will automatically create an `etherpad` database in the specified mysql
-server if it does not already exist.
+Etherpad will automatically create an `etherpad` database in the specified MySQL server if it does not already exist.
 You can now access Etherpad Lite from http://localhost:9001/
 
 ## Docker compose
 
-[Git Repo](https://github.com/tvelocity/dockerfiles/tree/master/etherpad-lite)
-contains a docker-compose file with a pre-configured mariadb container.
+[Git Repo](https://github.com/tvelocity/dockerfiles/tree/master/etherpad-lite) contains a docker-compose file with a pre-configured mariadb container.
 
 Use it:
 
