@@ -25,8 +25,6 @@ if [ "$1" = 'bin/run.sh' ]; then
 
 	: ${ETHERPAD_TITLE:=Etherpad}
 	: ${ETHERPAD_PORT:=9001}
-	: ${ETHERPAD_SESSION_KEY:=$(
-			node -p "require('crypto').randomBytes(32).toString('hex')")}
 
 	# Wait for database host to start up mysql
 	while ! mysqlshow -h$ETHERPAD_DB_HOST -P$ETHERPAD_DB_PORT \
@@ -59,7 +57,6 @@ if [ "$1" = 'bin/run.sh' ]; then
 			ETHERPAD_DB_NAME="$ETHERPAD_DB_NAME" \
 			ETHERPAD_TITLE="$ETHERPAD_TITLE" \
 			ETHERPAD_PORT="$ETHERPAD_PORT" \
-			ETHERPAD_SESSION_KEY="$ETHERPAD_SESSION_KEY" \
 			node /settings-generator.js > settings.json
 	fi
 fi

@@ -9,7 +9,6 @@
 		title: penv.ETHERPAD_TITLE,
 		ip: '0.0.0.0',
 		port: penv.ETHERPAD_PORT,
-		sessionKey: penv.ETHERPAD_SESSION_KEY,
 		dbType: 'mysql',
 		dbSettings: {
 			user: penv.ETHERPAD_DB_USER,
