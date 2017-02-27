@@ -2,7 +2,7 @@
 
 This is a docker image for [Etherpad Lite](http://etherpad.org/) collaborative text editor. The Dockerfile for this image has been inspired by [johbo's etherpad-lite](https://registry.hub.docker.com/u/johbo/etherpad-lite/).
 
-This image comes with configuration options for MariaDB (or MySQL) as the database backend. The docker-compose file we added allows users launch the etherpad and the database with a single `docker-compose up`.
+[This image](https://hub.docker.com/r/unihalle/etherpad-lite/) comes with configuration options for MariaDB (or MySQL) as the database backend. The docker-compose file we added allows users launch the etherpad and the database with a single `docker-compose up`.
 
 ## About Etherpad Lite
 
@@ -41,7 +41,7 @@ You can now access Etherpad Lite from http://localhost:9001/
 
 ## Docker compose
 
-[Git Repo](https://github.com/tvelocity/dockerfiles/tree/master/etherpad-lite) contains a docker-compose file with a pre-configured mariadb container.
+[Git Repo](https://github.com/uni-halle/etherpad-lite-docker) contains a docker-compose file with a pre-configured mariadb container.
 
 Use it:
 
