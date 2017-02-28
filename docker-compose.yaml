@@ -15,6 +15,7 @@ services:
       - ETHERPAD_DB_USER
       - ETHERPAD_DB_PASSWORD
       - ETHERPAD_DB_NAME
+      - ETHERPAD_API_KEY
     ports:
       - "127.0.0.1:${ETHERPAD_HOST_PORT}:9001"
 

@@ -59,6 +59,13 @@ if [ "$1" = 'bin/run.sh' ]; then
 			ETHERPAD_PORT="$ETHERPAD_PORT" \
 			node /settings-generator.js > settings.json
 	fi
+
+	if [ ! -f APIKEY.txt ]; then
+		if (( ${#ETHERPAD_API_KEY} > 20 )); then
+			echo "Writing API key"
+			echo "$ETHERPAD_API_KEY" > APIKEY.txt
+		fi
+	fi
 fi
 exec "$@"
 
