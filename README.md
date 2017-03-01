@@ -74,6 +74,8 @@ automatically used.
 database is not available, it will be created when the container is launched.
 * `ETHERPAD_API_KEY`: API key to use. Defaults to randomly generated string.
 Must be 20 characters or longer.
+* `ETHERPAD_SESSION_REQUIRED`: Users must have a session to access pads. This
+effectively allows only group pads to be accessed. Defaults to false.
 
 The generated settings.json file will be available as a volume under
 */opt/etherpad-lite/var/*.

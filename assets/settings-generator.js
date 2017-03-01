@@ -28,6 +28,9 @@
 			is_admin: true
 		};
 	}
+	if ( penv.ETHERPAD_SESSION_REQUIRED ) {
+		settings['requireSession'] = true;
+	}
 	process.stdout.write( JSON.stringify( settings, null, 4 ) );
 } () );
 
