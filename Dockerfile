@@ -1,6 +1,6 @@
-FROM node:7.6
+FROM node:9.3
 
-ENV ETHERPAD_VERSION 1.6.1
+ENV ETHERPAD_VERSION 1.6.2
 
 RUN apt-get update && \
     apt-get install -y curl unzip npm mysql-client
