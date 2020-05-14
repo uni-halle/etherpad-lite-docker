@@ -17,7 +17,7 @@ RUN apt-get update && \
 #
 # EXAMPLE:
 #   ETHERPAD_PLUGINS="ep_codepad ep_author_neat"
-ARG ETHERPAD_PLUGINS="ep_adminpads ep_hash_auth"
+ARG ETHERPAD_PLUGINS="ep_adminpads"
 
 # By default, Etherpad container is built and run in "production" mode. This is
 # leaner (development dependencies are not installed) and runs faster (among
