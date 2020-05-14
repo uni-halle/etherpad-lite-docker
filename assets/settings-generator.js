@@ -7,8 +7,8 @@
 	var penv = process.env;
 	var settings = {
 		title: penv.ETHERPAD_TITLE,
-		favicon: "favicon.ico",
-		skinName: "no-skin",
+		favicon: 'favicon.ico',
+		skinName: 'no-skin',
 		showSettingsInAdminPage: true,
 		ip: '0.0.0.0',
 		port: penv.ETHERPAD_PORT,

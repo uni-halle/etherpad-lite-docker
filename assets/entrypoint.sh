@@ -46,7 +46,7 @@ if [ "$1" = 'node' ]; then
 		echo "Creating database ${ETHERPAD_DB_NAME}"
 
 		mysql -u${ETHERPAD_DB_USER} -p${ETHERPAD_DB_PASSWORD} -h${ETHERPAD_DB_HOST} \
-		      -P${ETHERPAD_DB_PORT} -e "CREATE DATABASE ${ETHERPAD_DB_NAME}"
+		      -P${ETHERPAD_DB_PORT} -e "CREATE DATABASE ${ETHERPAD_DB_NAME} CHARACTER SET = '${ETHERPAD_DB_CHARSET}'"
 	fi
 
 	if [ ! -f settings.json ]; then
