@@ -5,11 +5,10 @@
 # Author: muxator
 
 FROM node:10-buster-slim
-LABEL maintainer="Etherpad team, https://github.com/ether/etherpad-lite"
 
-RUN apt-get update && \
-    apt-get install -y curl unzip mariadb-client && \
-    rm -r /var/lib/apt/lists/*
+ENV ETHERPAD_VERSION 4816785aef457f06611c3322e6b0cbcb9abc6a41
+
+LABEL maintainer="Etherpad team, https://github.com/ether/etherpad-lite"
 
 # plugins to install while building the container. By default no plugins are
 # installed.
@@ -31,12 +30,18 @@ ENV NODE_ENV=production
 RUN useradd --uid 5001 --create-home etherpad
 
 WORKDIR /opt/
-ENV ETHERPAD_VERSION 1.8.3
-RUN curl -SL \
-    https://github.com/ether/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
-    > etherpad.zip && unzip etherpad && rm etherpad.zip && \
+
+
+RUN apt-get update && \
+    apt-get install -y curl unzip mariadb-client && \
+    curl -SL \
+      https://github.com/ether/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
+      > etherpad.zip && unzip etherpad && rm etherpad.zip && \
     mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite && \
-    chown -R etherpad:0 etherpad-lite
+    chown -R etherpad:0 etherpad-lite && \
+    apt-get purge -y curl unzip && \
+    apt-get autoremove -y && \
+    rm -r /var/lib/apt/lists/*
 
 WORKDIR etherpad-lite
 
