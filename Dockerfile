@@ -27,7 +27,9 @@ ENV NODE_ENV=production
 #
 # Running as non-root enables running this image in platforms like OpenShift
 # that do not allow images running as root.
-RUN useradd --uid 5001 --create-home etherpad
+# Also fix issue that would arise when installing libreoffice
+RUN useradd --uid 5001 --create-home etherpad && \
+    mkdir -p /usr/share/man/man1
 
 WORKDIR /opt/
 
