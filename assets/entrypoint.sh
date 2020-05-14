@@ -6,6 +6,7 @@ if [ "$1" = 'node' ]; then
 	: ${ETHERPAD_DB_PORT:=3306}
 	: ${ETHERPAD_DB_USER:=root}
 	: ${ETHERPAD_DB_NAME:=etherpad}
+	: ${ETHERPAD_DB_CHARSET:=utf8mb4}
 	ETHERPAD_DB_NAME=$( echo $ETHERPAD_DB_NAME | sed 's/\./_/g' )
 
 	# ETHERPAD_DB_PASSWORD is mandatory in mysql container, so we're not offering
@@ -57,6 +58,7 @@ if [ "$1" = 'node' ]; then
 			ETHERPAD_DB_NAME="$ETHERPAD_DB_NAME" \
 			ETHERPAD_TITLE="$ETHERPAD_TITLE" \
 			ETHERPAD_PORT="$ETHERPAD_PORT" \
+			ETHERPAD_DB_CHARSET="$ETHERPAD_DB_CHARSET" \
 			node /settings-generator.js > settings.json
 	fi
 

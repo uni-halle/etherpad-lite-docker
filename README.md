@@ -72,6 +72,7 @@ are used and ETHERPAD_DB_USER is root, then `MYSQL_ENV_MYSQL_ROOT_PASSWORD` is
 automatically used.
 * `ETHERPAD_DB_NAME`: The mysql database to use. Defaults to *etherpad*. If the
 database is not available, it will be created when the container is launched.
+* `ETHERPAD_DB_CHARSET`: Character set. utf8mb4 is recommended.
 * `ETHERPAD_API_KEY`: API key to use. Defaults to randomly generated string.
 Must be 20 characters or longer.
 * `ETHERPAD_SESSION_REQUIRED`: Users must have a session to access pads. This

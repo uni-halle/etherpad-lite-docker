@@ -15,13 +15,14 @@ services:
       - ETHERPAD_DB_USER
       - ETHERPAD_DB_PASSWORD
       - ETHERPAD_DB_NAME
+      - ETHERPAD_DB_CHARSET
       - ETHERPAD_API_KEY
       - ETHERPAD_SESSION_REQUIRED
     ports:
       - "127.0.0.1:${ETHERPAD_HOST_PORT}:9001"
 
   mariadb:
-    image: mariadb:10.0
+    image: mariadb:10.4
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD

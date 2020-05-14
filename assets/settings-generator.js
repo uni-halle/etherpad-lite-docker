@@ -15,7 +15,8 @@
 			host: penv.ETHERPAD_DB_HOST,
 			port: penv.ETHERPAD_DB_PORT,
 			password: penv.ETHERPAD_DB_PASSWORD,
-			database: penv.ETHERPAD_DB_NAME
+			database: penv.ETHERPAD_DB_NAME,
+			charset: penv.ETHERPAD_DB_CHARSET
 		}
 	};
 	if ( penv.ETHERPAD_DEFAULT_PAD_TEXT ) {
