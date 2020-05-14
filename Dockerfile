@@ -1,28 +1,68 @@
-FROM node:9.3
+# Etherpad Lite Dockerfile
+#
+# https://github.com/ether/etherpad-lite
+#
+# Author: muxator
 
-ENV ETHERPAD_VERSION 1.6.2
+FROM node:10-buster-slim
+LABEL maintainer="Etherpad team, https://github.com/ether/etherpad-lite"
 
 RUN apt-get update && \
-    apt-get install -y curl unzip npm mysql-client
+    apt-get install -y curl unzip mariadb-client && \
+    rm -r /var/lib/apt/lists/*
+
+# plugins to install while building the container. By default no plugins are
+# installed.
+# If given a value, it has to be a space-separated, quoted list of plugin names.
+#
+# EXAMPLE:
+#   ETHERPAD_PLUGINS="ep_codepad ep_author_neat"
+ARG ETHERPAD_PLUGINS="ep_adminpads ep_hash_auth"
+
+# By default, Etherpad container is built and run in "production" mode. This is
+# leaner (development dependencies are not installed) and runs faster (among
+# other things, assets are minified & compressed).
+ENV NODE_ENV=production
+
+# Follow the principle of least privilege: run as unprivileged user.
+#
+# Running as non-root enables running this image in platforms like OpenShift
+# that do not allow images running as root.
+RUN useradd --uid 5001 --create-home etherpad
 
 WORKDIR /opt/
-
+ENV ETHERPAD_VERSION 1.8.3
 RUN curl -SL \
     https://github.com/ether/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
     > etherpad.zip && unzip etherpad && rm etherpad.zip && \
-    mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite
+    mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite && \
+    chown -R etherpad:0 etherpad-lite
 
 WORKDIR etherpad-lite
 
-RUN bin/installDeps.sh && rm settings.json
-ADD assets /
+USER etherpad
 
-RUN sed -i 's/^node/exec\ node/' bin/run.sh
+# install node dependencies for Etherpad
+RUN bin/installDeps.sh && \
+	rm -rf ~/.npm/_cacache && \
+        rm settings.json
+
+# Install the plugins, if ETHERPAD_PLUGINS is not empty.
+#
+# Bash trick: in the for loop ${ETHERPAD_PLUGINS} is NOT quoted, in order to be
+# able to split at spaces.
+RUN for PLUGIN_NAME in ${ETHERPAD_PLUGINS}; do npm install "${PLUGIN_NAME}"; done
+
+# Copy the configuration file.
+ADD assets /
 
 VOLUME /opt/etherpad-lite/var
 RUN ln -s var/settings.json settings.json
 
+# Fix permissions for root group
+RUN chmod -R g=u .
+
 EXPOSE 9001
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["bin/run.sh", "--root"]
+CMD ["node", "node_modules/ep_etherpad-lite/node/server.js"]
 

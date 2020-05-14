@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [ "$1" = 'bin/run.sh' ]; then
+if [ "$1" = 'node' ]; then
 	: ${ETHERPAD_DB_HOST:=mysql}
 	: ${ETHERPAD_DB_PORT:=3306}
 	: ${ETHERPAD_DB_USER:=root}
