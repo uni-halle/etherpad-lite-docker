@@ -13,6 +13,7 @@
 		ip: '0.0.0.0',
 		port: penv.ETHERPAD_PORT,
 		dbType: 'mysql',
+		soffice : "/usr/bin/soffice",
 		dbSettings: {
 			user: penv.ETHERPAD_DB_USER,
 			host: penv.ETHERPAD_DB_HOST,

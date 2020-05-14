@@ -33,7 +33,7 @@ WORKDIR /opt/
 
 
 RUN apt-get update && \
-    apt-get install -y curl unzip mariadb-client && \
+    apt-get install -y curl unzip mariadb-client libreoffice && \
     curl -SL \
       https://github.com/ether/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
       > etherpad.zip && unzip etherpad && rm etherpad.zip && \
