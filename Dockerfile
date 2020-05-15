@@ -6,7 +6,7 @@
 
 FROM node:10-buster-slim
 
-ENV ETHERPAD_VERSION 4816785aef457f06611c3322e6b0cbcb9abc6a41
+ENV ETHERPAD_VERSION d3bf78510f500c7b9869f810e318ffe1f55cbecc
 
 LABEL maintainer="Etherpad team, https://github.com/ether/etherpad-lite"
 
@@ -37,7 +37,7 @@ WORKDIR /opt/
 RUN apt-get update && \
     apt-get install -y curl unzip mariadb-client libreoffice && \
     curl -SL \
-      https://github.com/ether/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
+      https://github.com/Rillke/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
       > etherpad.zip && unzip etherpad && rm etherpad.zip && \
     mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite && \
     chown -R etherpad:0 etherpad-lite && \

@@ -1,6 +1,7 @@
 version: "2"
 services:
   etherpad:
+    image: unihalle/etherpad-lite:latest
     build:
       context: .
       dockerfile: Dockerfile
