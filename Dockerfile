@@ -6,7 +6,7 @@
 
 FROM node:10-buster-slim
 
-ENV ETHERPAD_VERSION d3bf78510f500c7b9869f810e318ffe1f55cbecc
+ENV ETHERPAD_VERSION 901a3f396-script-to-create-session
 
 LABEL maintainer="Etherpad team, https://github.com/ether/etherpad-lite"
 
