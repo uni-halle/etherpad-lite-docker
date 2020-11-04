@@ -6,7 +6,7 @@
 
 FROM node:10-buster-slim
 
-ENV ETHERPAD_VERSION 901a3f396-script-to-create-session
+ENV ETHERPAD_VERSION 1.8.6
 
 LABEL maintainer="Etherpad team, https://github.com/ether/etherpad-lite"
 
@@ -37,7 +37,7 @@ WORKDIR /opt/
 RUN apt-get update && \
     apt-get install -y curl unzip mariadb-client libreoffice && \
     curl -SL \
-      https://github.com/Rillke/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
+      https://github.com/ether/etherpad-lite/archive/${ETHERPAD_VERSION}.zip \
       > etherpad.zip && unzip etherpad && rm etherpad.zip && \
     mv etherpad-lite-${ETHERPAD_VERSION} etherpad-lite && \
     chown -R etherpad:0 etherpad-lite && \
