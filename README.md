@@ -50,6 +50,10 @@ Use it:
 3. Copy or rename `example.env` to `.env` and adjust the passwords.
 4. Start up everything with `docker-compose up`.
 
+Important: If you plan on not to loose your MySQL Databases/Tables while docker-
+compose down, store the MySQL/MariaDB data in a volume and prevent its deletion!
+Confer to the according MySQL/MariaDB image for more information.
+
 ## Environment variables
 
 This image supports the following environment variables:
