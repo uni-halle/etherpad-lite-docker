@@ -49,18 +49,16 @@ if [ "$1" = 'node' ]; then
 		      -P${ETHERPAD_DB_PORT} -e "CREATE DATABASE ${ETHERPAD_DB_NAME} CHARACTER SET = '${ETHERPAD_DB_CHARSET}'"
 	fi
 
-	if [ ! -f settings.json ]; then
-		echo "Creating settings.json"
-		env \
-			ETHERPAD_DB_HOST="$ETHERPAD_DB_HOST" \
-			ETHERPAD_DB_PORT="$ETHERPAD_DB_PORT" \
-			ETHERPAD_DB_USER="$ETHERPAD_DB_USER" \
-			ETHERPAD_DB_NAME="$ETHERPAD_DB_NAME" \
-			ETHERPAD_TITLE="$ETHERPAD_TITLE" \
-			ETHERPAD_PORT="$ETHERPAD_PORT" \
-			ETHERPAD_DB_CHARSET="$ETHERPAD_DB_CHARSET" \
-			node /settings-generator.js > settings.json
-	fi
+	echo "Creating settings.json"
+	env \
+		ETHERPAD_DB_HOST="$ETHERPAD_DB_HOST" \
+		ETHERPAD_DB_PORT="$ETHERPAD_DB_PORT" \
+		ETHERPAD_DB_USER="$ETHERPAD_DB_USER" \
+		ETHERPAD_DB_NAME="$ETHERPAD_DB_NAME" \
+		ETHERPAD_TITLE="$ETHERPAD_TITLE" \
+		ETHERPAD_PORT="$ETHERPAD_PORT" \
+		ETHERPAD_DB_CHARSET="$ETHERPAD_DB_CHARSET" \
+		node /settings-generator.js > settings.json
 
 	if [ ! -f APIKEY.txt ]; then
 		if (( ${#ETHERPAD_API_KEY} > 20 )); then
