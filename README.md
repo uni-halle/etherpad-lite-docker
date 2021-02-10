@@ -10,7 +10,7 @@ This is a docker image for [Etherpad Lite](http://etherpad.org/) collaborative t
 
 Etherpad allows you to edit documents collaboratively in real-time, much like a live multi-player editor that runs in your browser. Write articles, press releases, to-do lists, etc. together with your friends, fellow students or colleagues, all working on the same document at the same time.
 
-![alt text](http://i.imgur.com/zYrGkg3.gif "Etherpad in action on PrimaryPad")
+![Animation illustrating use of Etherpad Lite: Collaborative typing with authorship colors](http://i.imgur.com/zYrGkg3.gif "Etherpad in action on PrimaryPad")
 
 All instances provide access to all data through a well-documented API and supports import/export to many major data exchange formats. And if the built-in feature set isn't enough for you, there's tons of plugins that allow you to customize your instance to suit your needs.
 
@@ -47,7 +47,7 @@ Use it:
 
 1. Install docker-compose.
 2. Clone the repo and cd into etherpad-lite.
-3. Rename `example.env` to `.env` and adjust the passwords.
+3. Copy or rename `example.env` to `.env` and adjust the passwords.
 4. Start up everything with `docker-compose up`.
 
 ## Environment variables
@@ -76,8 +76,8 @@ database is not available, it will be created when the container is launched.
 * `ETHERPAD_API_KEY`: API key to use. Defaults to randomly generated string.
 Must be 20 characters or longer.
 * `ETHERPAD_SESSION_REQUIRED`: Users must have a session to access pads. This
-effectively allows only group pads to be accessed. Defaults to false.
+effectively allows only group pads to be accessed. Defaults to unset (false).
+Adding the key to any non-blank value will most likely trigger this behavior.
 
 The generated settings.json file will be available as a volume under
 */opt/etherpad-lite/var/*.
-

@@ -27,7 +27,8 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE
-      - MYSQL_USER
-      - MYSQL_PASSWORD
+      - MYSQL_DATABASE=${ETHERPAD_DB_NAME}
+      - MYSQL_USER=${ETHERPAD_DB_USER}
+      - MYSQL_PASSWORD=${ETHERPAD_DB_PASSWORD}
+    command: ["mysqld", "--character-set-server=${ETHERPAD_DB_CHARSET}", "--collation-server=${ETHERPAD_DB_CHARSET}_unicode_ci"]
 
