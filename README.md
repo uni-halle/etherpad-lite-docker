@@ -54,6 +54,9 @@ Important: If you plan on not to loose your MySQL Databases/Tables while docker-
 compose down, store the MySQL/MariaDB data in a volume and prevent its deletion!
 Confer to the according MySQL/MariaDB image for more information.
 
+Note: MariaDB/MySQL images may not update your database credentials, even if
+you change them in environment variables.
+
 ## Environment variables
 
 This image supports the following environment variables:
